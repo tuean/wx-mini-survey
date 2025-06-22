@@ -1,0 +1,3 @@
+<t-navbar title="测试题目" left-arrow />
+
+<t-image src="/static/main/main-1.png" width="{{width}}" height="{{height}}" mode='scaleToFill' bindtap="goSurveyInfo"></t-image>

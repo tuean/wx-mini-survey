@@ -1,0 +1,42 @@
+<view class="container">
+  <!-- 顶部标题栏区域，使用 TDesign 的 NavBar 组件 -->
+  <t-navbar title="测试结果" left-arrow />
+
+  <!-- 题目内容区域 -->
+  <view class="question-section">
+    <text class="question-title">{{character}}</text>
+    <!-- <text class="question-desc">{{avatar}}</text> -->
+    <text class="question-desc">{{text}}</text>
+
+    <view class="btn-section"> 
+      <!-- <t-button theme="primary" size="large" block variant="outline"  bindtap="login">分享结果</t-button> -->
+      <!-- <t-button theme="primary" size="large" block variant="outline"  bindtap="login">关注我们</t-button> -->
+      <t-row gutter="24">
+      <t-col span="12">
+        <t-button theme="primary" size="large" block variant="outline"  bind:tap="focusUs">分享结果</t-button>
+      </t-col>
+      <t-col span="12">
+        <t-button theme="primary" size="large" block variant="outline"  bind:tap="handlePopup">关注我们</t-button>
+      </t-col>
+    </t-row>
+    </view>
+
+    
+  </view>
+
+  <t-toast id="t-toast" />
+
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
+    <view class="block">
+     <t-image class="qr" src="/static/R-C.png" mode="aspectFill" />
+      <!-- <view class="header"> -->
+        <!-- <view class="text" >前往非夕站台参加活动</view> -->
+        <!-- <view class="btn btn--cancel" aria-role="button">取消</view> -->
+        <!-- <view class="title">标题文字</view> -->
+        <!-- <view class="btn btn--confirm" aria-role="button">确定</view> -->
+      <!-- </view> -->
+  </view>
+</t-popup>
+
+ 
+</view>

@@ -1,0 +1,20 @@
+<view class="container">
+  <!-- 顶部标题栏区域，使用 TDesign 的 NavBar 组件 -->
+  <t-navbar title="测试题目" left-arrow />
+
+  <!-- 题目内容区域 -->
+  <view class="question-section">
+    <text class="question-title">{{index}}</text>
+    <text class="question-desc">{{question}}</text>
+    <!-- 选项区域，使用 TDesign 的 Cell 组件做选项展示 -->
+    <t-cell-group>
+      <t-cell value="{{item.id}}" title="{{item.id + '.' + item.value}}" bind:click="handleOptionTap" data-type="{{item.id}}" wx:for="{{answers}}" wx:key="id" />
+    </t-cell-group>
+  </view>
+
+  <!-- 底部插画示意区域，这里简单用图片标签，实际可替换为设计好的插画 -->
+  <view class="illustration-section">
+    <!-- <image src="/images/illustration.png" mode="widthFix"></image> -->
+    <!-- <text class="footer-text">@Personality Test</text> -->
+  </view>
+</view>

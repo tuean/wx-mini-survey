@@ -1,0 +1,12 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "t-row": "tdesign-miniprogram/row/row",
+    "t-col": "tdesign-miniprogram/col/col",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-image": "tdesign-miniprogram/image/image"
+  }
+}
