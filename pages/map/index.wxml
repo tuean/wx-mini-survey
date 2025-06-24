@@ -1,0 +1,65 @@
+<!--pages/map/index.wxml-->
+
+<!-- <view class="bg">
+  <t-image t-class="image" src="/static/pc-all.jpg" mode="aspectFill" />
+</view> -->
+<!-- <view style="height:100vh; width:100vw;"> -->
+  <!-- <movable-area style="height:100vh; width:100vw; overflow:hidden">
+  <movable-view class='map' scale-min="0.5" scale-max="3" scale-value="1" direction="all" bindchange="onChange" bindscale="onScale" x="{{x}}" y="{{y}}" >
+    <image class='image' src="/static/pc-all.jpg" >
+       <view style='top:{{bubbleTop}}; left:{{bubbleLeft}}; position: absolute;' data-scale="{{dataScale}}">
+        </view>
+      
+    </image>
+  </movable-view>
+</movable-area> -->
+<!-- </view> -->
+
+<view class="container">
+  <!-- 地图容器 -->
+  <movable-area class="map-container" style="width: {{windowWidth}}px; height: {{windowHeight}}px;">
+    <movable-view
+      class="map"
+      style="width: {{mapWidth * scale}}px; height: {{mapHeight * scale}}px; transform: translate({{translateX}}px, {{translateY}}px) scale({{scale}});"
+      direction="all"
+      inertia
+      bindtouchstart="onTouchStart"
+      bindtouchmove="onTouchMove"
+      bindtouchend="onTouchEnd"
+      bindtouchcancel="onTouchEnd"
+    >
+      <!-- 地图背景图片 -->
+      <image class="map-image" src="{{mapImage}}" mode="aspectFill"></image>
+      
+      <!-- 标记点 -->
+      <block wx:for="{{markers}}" wx:key="id">
+        <view
+          class="marker"
+          style="left: {{item.x - 12}}px; top: {{item.y - 12}}px;"
+          data-id="{{item.id}}"
+        >
+          <image src="/images/marker.png" mode="aspectFit"></image>
+        </view>
+      </block>
+    </movable-view>
+  </movable-area>
+  
+  <!-- 控制按钮 -->
+  <view class="controls">
+    <button class="reset-btn" bindtap="resetMap">重置地图</button>
+  </view>
+  
+  <!-- 标记信息浮层 -->
+  <view class="marker-info" wx:if="{{showMarkerInfo}}">
+    <view class="info-header">
+      <text class="info-title">{{currentMarker.title}}</text>
+      <image class="close-btn" src="/images/close.png" mode="aspectFit" bindtap="closeMarkerInfo"></image>
+    </view>
+    <view class="info-content">
+      <text>{{currentMarker.desc}}</text>
+    </view>
+    <view class="info-footer">
+      <button class="navigate-btn">导航到这里</button>
+    </view>
+  </view>
+</view>

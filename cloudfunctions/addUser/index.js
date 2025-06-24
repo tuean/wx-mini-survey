@@ -6,11 +6,15 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
+  console.log(wxContext)
 
   let openid = wxContext.OPENID
   console.log(openid)
   let personInfo = event.personInfo
   const db = cloud.database()
+
+  // let a = db.collection('users').get()
+
 
   const data = {
     // _id: openid,

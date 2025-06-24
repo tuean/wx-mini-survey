@@ -4,11 +4,18 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/result/index",
-          "pathName": "pages/result/index",
+          "name": "展厅",
+          "pathName": "pages/hall/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/result/index",
+          "pathName": "pages/result/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/q1/index",

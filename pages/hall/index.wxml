@@ -1,0 +1,13 @@
+<!--pages/hall/index.wxml-->
+
+
+<view class="bg">
+  <t-navbar title="展厅入口" left-arrow />
+  <view class="banner">banner</view>
+
+  <view class="banner-image">展厅示意图</view>
+
+  <t-button class="btn" theme="primary" size="large" block variant="outline"  bind:tap="enter">进入展厅</t-button>
+</view>
+
+
