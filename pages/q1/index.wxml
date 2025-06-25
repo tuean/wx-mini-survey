@@ -1,6 +1,6 @@
 <view class="container">
   <!-- 顶部标题栏区域，使用 TDesign 的 NavBar 组件 -->
-  <t-navbar title="测试题目" class = "custom-navbar" />
+  <t-navbar title = '第 {{index}} 题' class = "custom-navbar" />
 
   <!-- 题目内容区域 -->
   <view class="question-section">
@@ -16,14 +16,14 @@
         size = "small" 
         class = "{{item.selected ? 'answerselected-button' : 'answer-button'}}">{{item.id}}  {{item.value}}</t-button>
     </t-space>
-    <t-row>
+    <!-- <t-row>
       <t-col offset="1" span="10">
         <t-button theme = "default" block size="small" class = "up-button" bindtap = "handleOptionTapUp" data-questionid = '{{index}}'>上一题</t-button>
       </t-col>
       <t-col offset="2" span="10">      
         <t-button theme = "default" block size="small" class = "down-button" bindtap = "handleOptionTapNext" data-questionid = '{{index}}' >下一题</t-button>
       </t-col>
-    </t-row>
+    </t-row> -->
 
   </view>
 

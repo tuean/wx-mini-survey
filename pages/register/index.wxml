@@ -15,5 +15,5 @@
 </view>
 
 <view class="info-edit__save">
-  <t-button bind:tap="onSaveInfo" block size="medium" theme="primary">参与答题</t-button>
+  <t-button variant="text" style = "background-color: rgb(209, 50, 29); font-weight: 400; color: white" bind:tap="onSaveInfo" block size="medium" theme="primary">参与答题</t-button>
 </view>
