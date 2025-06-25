@@ -1,15 +1,30 @@
 <view class="container">
   <!-- 顶部标题栏区域，使用 TDesign 的 NavBar 组件 -->
-  <t-navbar title="测试题目" left-arrow />
+  <t-navbar title="测试题目" class = "custom-navbar" />
 
   <!-- 题目内容区域 -->
   <view class="question-section">
-    <text class="question-title">{{index}}</text>
+    <text class = "question-num">题数: {{index}}/{{questions.length}}</text>
     <text class="question-desc">{{question}}</text>
     <!-- 选项区域，使用 TDesign 的 Cell 组件做选项展示 -->
-    <t-cell-group>
-      <t-cell value="{{item.id}}" title="{{item.id + '.' + item.value}}" bind:click="handleOptionTap" data-type="{{item.id}}" wx:for="{{answers}}" wx:key="id" />
-    </t-cell-group>
+    <t-space wx:for="{{answers}}" wx:key="id">
+      <t-button 
+        bindtap = "handleOptionTap" 
+        style = "white-space: pre; "
+        data-answerinfo = '{{item}}'
+        theme = "default" 
+        size = "small" 
+        class = "{{item.selected ? 'answerselected-button' : 'answer-button'}}">{{item.id}}  {{item.value}}</t-button>
+    </t-space>
+    <t-row>
+      <t-col offset="1" span="10">
+        <t-button theme = "default" block size="small" class = "up-button" bindtap = "handleOptionTapUp" data-questionid = '{{index}}'>上一题</t-button>
+      </t-col>
+      <t-col offset="2" span="10">      
+        <t-button theme = "default" block size="small" class = "down-button" bindtap = "handleOptionTapNext" data-questionid = '{{index}}' >下一题</t-button>
+      </t-col>
+    </t-row>
+
   </view>
 
   <!-- 底部插画示意区域，这里简单用图片标签，实际可替换为设计好的插画 -->

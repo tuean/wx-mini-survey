@@ -1,6 +1,6 @@
 <view class="container">
   <!-- 顶部标题栏区域，使用 TDesign 的 NavBar 组件 -->
-  <t-navbar title="测试结果" left-arrow />
+  <t-navbar title="测试结果" class="custom-navbar" />
 
   <!-- 题目内容区域 -->
   <view class="question-section">
@@ -13,10 +13,11 @@
       <!-- <t-button theme="primary" size="large" block variant="outline"  bindtap="login">关注我们</t-button> -->
       <t-row gutter="24">
       <t-col span="12">
-        <t-button theme="primary" size="large" block variant="outline"  bind:tap="focusUs">分享结果</t-button>
+        <t-button theme="default" size="large" block variant="outline" class = "share-button"  bind:tap="focusUs" variant="text">
+          <Share1Icon />分享结果</t-button>
       </t-col>
       <t-col span="12">
-        <t-button theme="primary" size="large" block variant="outline"  bind:tap="handlePopup">关注我们</t-button>
+        <t-button theme="default" size="large" block variant="outline"  bind:tap="handlePopup" class = "focus-button" variant="text">关注我们</t-button>
       </t-col>
     </t-row>
     </view>

@@ -78,6 +78,7 @@ Page({
     });
   },
   goSurveyInfo() {
+    wx.removeStorageSync('storeQuestions');
     wx.navigateTo({
       url: '/pages/register/index',
     });

@@ -20,13 +20,21 @@ Page({
   onLoad(options) {
       this.data.i = options.i
       console.log('当前index', options.i)
+      var storeQuestions = wx.getStorageSync('storeQuestions');
+      if(storeQuestions) {
+        this.setData({
+          "questions": storeQuestions
+        });
+      }
+      console.log("this.data.questions", this.data.questions)
       if (options.i == null) {
         this.data.i = 0
       }
-      let size = questions.length
+      
+      let size = this.data.questions.length
       console.log(size)
       for (let x = 0; x < size; x++) {
-        let q = questions[x]
+        let q = this.data.questions[x]
         console.log(q)
         if (q.i == this.data.i) {
           console.log("找到当前问题", q)
@@ -86,32 +94,99 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-
   },
 
   async handleOptionTap(e) {
-    const type = e.currentTarget.dataset.type;
-    // 这里可处理选项点击逻辑，比如记录用户选择、跳转等
-    // wx.showToast({
-    //   title: `你选择了${type}`,
-    //   icon: 'none'
-    // });
-    let key = 'q' + this.data.i
+    console.log("e", e)
+    const answerinfo = e.currentTarget.dataset.answerinfo;
+    console.log("answerinfo", answerinfo);
+    const i = answerinfo.i;
+    var answers = this.data.questions[i].answers;
+    console.log("answer", this.data.questions[i])
+    for(var j = 0; j < answers.length; j++) {
+      answers[j].selected = false;
+    }
+    console.log(answerinfo.id)
+    for(var j = 0; j < answers.length; j++) {
+      if(answers[j].id == answerinfo.id) {
+        answers[j].selected = true;
+      }
+    }
+    console.log("answer", answers)
+    this.setData({
+      "answers": answers
+    });
+    console.log("this.data.questions", this.data.questions);
+
+    const type = answerinfo.id;
+    let key = 'q' + this.data.i;
     await wx.setStorageSync(key, type);
-
-    if (this.data.i == questions.length - 1) {
-       // 最后一道题 到结果页面
-       wx.navigateTo({
-        url: '/pages/result/index'
-      });
-
+    await wx.setStorageSync('storeQuestions', this.data.questions);
+    if (answerinfo.i == this.data.questions.length - 1) {
+      console.log("key111", key)
+      // 最后一道题 到结果页面
+      wx.navigateTo({
+       url: '/pages/result/index'
+     });
     } else {
-      let next_i = this.data.i + 1
-      console.log('next i', next_i)
+      let next_i = answerinfo.i + 1
+      console.log('next i', next_i) //第一题跳转到第二题 next_i 为1
       wx.navigateTo({
         url: '/pages/q1/index?i=' + next_i,
       });
     }
+  },
+
+  handleOptionTapNext(e) {
+    const questionid = e.currentTarget.dataset.questionid;
+    console.log("quesitionid", questionid)
+    var answers = this.data.questions[questionid - 1].answers;
+    if(questionid == answers.length) {
+      wx.showToast({
+        title: '该题目已是最后一题',
+        icon: 'none',
+        duration: 1000
+      });
+      return;
+    }
+    var num = 0;
+    for(var j = 0; j < answers.length; j++) {
+      if(answers[j].selected == false) {
+        num = num + 1;
+      }
+    }
+    if(num == answers.length) {
+      wx.showToast({
+        title: '请填写当前题目',
+        icon: 'none',
+        duration: 1000
+      });
+      return;
+    }
+    let next_i = Number(questionid);
+    console.log('next i', next_i)
+    wx.navigateTo({
+      url: '/pages/q1/index?i=' + next_i,
+    });
+  },
+
+  handleOptionTapUp(e) {
+    const questionid = e.currentTarget.dataset.questionid;
+    if(questionid == 1) {
+      wx.showToast({
+        title: '该题目已经是第一题',
+        icon: 'none',
+        duration: 1000
+      });
+      return;
+    }
+    console.log("quesitionid", questionid);
+    console.log("this.data.questions", this.data.questions)
+    let next_i = Number(questionid) - 2;
+    console.log('next i', next_i)
+    wx.navigateTo({
+      url: '/pages/q1/index?i=' + next_i,
+    });
   }
 
 })

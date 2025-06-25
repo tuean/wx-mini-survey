@@ -7,6 +7,7 @@
     "t-col": "tdesign-miniprogram/col/col",
     "t-popup": "tdesign-miniprogram/popup/popup",
     "t-toast": "tdesign-miniprogram/toast/toast",
-    "t-image": "tdesign-miniprogram/image/image"
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-icon": "tdesign-miniprogram/icon/icon"
   }
 }
