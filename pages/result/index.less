@@ -12,22 +12,23 @@
 }
 
 .question-title {
-  font-size: 81rpx;
-  font-weight: bold;
+  font-size: 80rpx;
+  font-weight: 500;
   margin-bottom: 10rpx;
   height: 49px;
   line-height: 48px;
   text-align: center;
   margin-top: 100rpx;
+  color: rgb(218, 120, 54)
 }
 
 .question-desc {
-  font-size: 44rpx;
-  color: #333;
+  font-size: 32rpx;
+  color: #666666;
   margin-bottom: 30rpx;
-  padding-top: 88px;
-  text-align: center;
   text-indent: 2em;
+  padding: 100rpx 32rpx;
+  line-height: 1.8;
 }
 
 .btn-section {
@@ -104,4 +105,27 @@
 
 .btn--confirm {
   color: #0052d9;
+}
+
+.share-button {
+  &.t-button--default {
+    font-weight: 400; 
+    margin-top: 60rpx;
+    color: #333;
+    background-color: rgb(243, 217, 68);
+  }
+}
+
+.focus-button {
+  &.t-button--default {
+    font-weight: 400; 
+    margin-top: 60rpx;
+    color: #333;
+    background-color: rgba(243, 217, 68, 0.3);
+  }
+}
+
+.custom-navbar {
+  --td-navbar-color: #333;;
+  --td-navbar-bg-color: rgb(243, 217, 68);
 }

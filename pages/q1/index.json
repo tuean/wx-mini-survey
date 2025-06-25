@@ -4,6 +4,9 @@
     "t-button": "tdesign-miniprogram/button/button",
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group"
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "t-row": "tdesign-miniprogram/row/row",
+    "t-col": "tdesign-miniprogram/col/col",
+    "t-toast": "tdesign-miniprogram/toast/toast"
   }
 }

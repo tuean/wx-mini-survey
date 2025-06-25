@@ -11,6 +11,12 @@
   flex-direction: column;
 }
 
+.question-num {
+  padding: 40rpx 32rpx;
+  color: #333;
+  font-size: 32rpx;
+}
+
 .question-title {
   font-size: 81rpx;
   font-weight: bold;
@@ -21,11 +27,9 @@
 }
 
 .question-desc {
-  font-size: 28rpx;
-  color: #333;
-  margin-bottom: 30rpx;
-  padding-top: 88px;
-  text-align: center;
+  font-size: 32rpx;
+  color: #666;
+  padding: 0rpx 32rpx 40rpx 32rpx;
 }
 
 .illustration-section {
@@ -48,4 +52,43 @@
 
 .t-cell__title-text {
   padding-left: 30rpx;
+}
+
+// 自定义按钮类
+.answer-button {
+  &.t-button--default {
+    font-weight: 400; 
+    margin-bottom: 30rpx;
+    margin-left: 40rpx
+  }
+}
+
+.answerselected-button {
+  &.t-button--default {
+    color: white;
+    background-color: rgb(146, 181, 245);
+    border-color: rgb(146, 181, 245);
+    font-weight: 400; 
+    margin-bottom: 30rpx;
+    margin-left: 40rpx
+  }
+}
+
+.up-button {
+  &.t-button--default {
+    font-weight: 400; 
+    margin-top: 60rpx;
+  }
+}
+.down-button {
+  &.t-button--default {
+    font-weight: 400; 
+    margin-top: 60rpx;
+    color: white;
+    background-color: rgb(146, 181, 245);
+  }
+}
+.custom-navbar {
+  --td-navbar-color: #333;
+  --td-navbar-bg-color: rgb(243, 217, 68);
 }
