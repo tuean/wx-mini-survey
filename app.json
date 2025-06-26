@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+    "pages/hall/index",
     "pages/main/index",
     "pages/home/index",
     "pages/message/index",
@@ -8,8 +8,7 @@
     "pages/register/index",
     "pages/q1/index",
     "pages/result/index",
-    "pages/map/index",
-    "pages/hall/index" 
+    "pages/map/index"
    ],
   "usingComponents": {
     "t-toast": "tdesign-miniprogram/toast/toast"
