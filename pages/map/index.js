@@ -8,7 +8,9 @@ Page({
     // x: 0,
     // y: 0,
     // dataScale: 1.0,
-    mapImage: '/static/pc-all.jpg', // 地图底图路径
+    mapImage1: '/static/flag.jpg',
+    video: '/static/SampleVideo.mp4',
+    mapImage: '/static/pc-all.png', // 地图底图路径
     markers: [
       { id: 1, x: 100, y: 150, title: '标记点1', desc: '这是第一个标记点的描述信息' },
       { id: 2, x: 250, y: 200, title: '标记点2', desc: '这是第二个标记点的描述信息' },
@@ -271,5 +273,5 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
 })
