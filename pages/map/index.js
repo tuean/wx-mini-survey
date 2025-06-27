@@ -5,6 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    visible: false,
+    playing: false,
+    innerAudioContext: null,
+    videoUrl: '',
     // x: 0,
     // y: 0,
     // dataScale: 1.0,
@@ -34,7 +38,28 @@ Page({
     lastDistance: 0, // 上次双指距离（用于缩放）
     lastScale: 1, // 上次缩放比例
   },
-
+  radio() {
+      let isPlaying = this.data.playing
+      if (isPlaying) {
+        this.data.innerAudioContext.pause();
+        this.setData({playing: false})
+      } else {
+        this.data.innerAudioContext.play();
+        this.setData({playing: true})
+      }
+  },
+  jump() {
+    console.log('跳转')
+    this.setData({ visible: true });
+  },
+  onVisibleChange(e) {
+    this.setData({
+      visible: e.detail.visible,
+    });
+  },
+  videoErrorCallback(e) {
+    console.log(e)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -230,7 +255,31 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+    // 先从数据库中拿到所有链接
+    wx.cloud.init()
+    let _this = this
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'files',
+      // 传给云函数的参数
+      data: {},
+      success: function(res) {
+        console.log(res.result) // 3
+        const f1 = res.result.data.find(item => item.use === 'flag1');
+        _this.data.innerAudioContext.src = f1 == null ? '' : f1.url
 
+        const f2 = res.result.data.find(item => item.use === 'flag2');
+        _this.data.videoUrl = f2 == null ? '' : f2.url
+      },
+      fail: console.error
+    })
+    this.videoContext = wx.createVideoContext('myVideo')
+    const audio = wx.createInnerAudioContext({useWebAudioImplement: true})
+    // audio.src = "https://636c-cloud1-8g0nusr7bf320e06-1305050421.tcb.qcloud.la/ringing_short.mp3?sign=7cf2addc75f3a13eec2737a2ad39740f&t=1751024785"
+    console.log(audio)
+    this.setData({
+        innerAudioContext:  audio
+    })
   },
 
   /**
@@ -273,5 +322,6 @@ Page({
    */
   onShareAppMessage() {
 
-  },
+  }
+  
 })

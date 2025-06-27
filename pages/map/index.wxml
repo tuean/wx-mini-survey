@@ -2,10 +2,33 @@
   <t-navbar title="施耐德电气行业云展厅" left-arrow />
   <view style="width:100%; overflow-x: scroll;white-space: nowrap;">
     <view class="container1">
-      <image src="{{mapImage1}}" class="flag-overlay"></image>
+      <image src="{{mapImage1}}" class="flag-overlay" bind:tap="jump"></image>
       <button class="flag-overlay-button" theme="light" size="small" >左右滑动手机屏幕</button>
       <t-image src="{{mapImage}}" class="full-height-image1" mode="heightFix"></t-image>
     </view>
+
+    <t-popup
+      visible="{{visible}}"
+      usingCustomNavbar
+      bind:visible-change="onVisibleChange"
+      placement="center"
+    >
+    <video 
+      id="myVideo" 
+      src="{{videoUrl}}" 
+      binderror="videoErrorCallback" 
+      show-center-play-btn='{{true}}' 
+      show-play-btn="{{true}}" 
+      controls
+      picture-in-picture-mode="{{['push', 'pop']}}"
+      bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+      bindleavepictureinpicture='bindVideoLeavePictureInPicture'
+    ></video>
+    <t-button theme="default" size="large" block variant="outline" class = "share-button"  bind:tap="radio">音频播放</t-button>
+    </t-popup>
   </view>
+
+
+  
 </view>
 
