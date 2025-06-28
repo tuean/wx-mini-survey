@@ -108,7 +108,7 @@
 
 .container1 {
   width: 100%;
-  height: 100vh; /* 占满整个屏幕高度 */
+  height: calc(100vh - 170rpx); /* 占满整个屏幕高度 */
   // overflow: hidden; /* 防止内容溢出 */
   position: relative;
 }
@@ -150,9 +150,47 @@
   font-weight: 500;
 }
 
+.flag-overlay-top {
+  position: fixed; /* 绝对定位 */
+  top: 170rpx; /* 距离顶部 20px */
+  z-index: 20; /* 确保小旗子在图片之上 */
+  background-color: rgba(28, 196, 13);
+  width: 100%;
+  padding: 20rpx 40rpx;
+  font-size: 32rpx;
+}
+
 .video-container {
   width: 50vw;
   height: 30vh;
   text-align: center;
+}
+.moving-arrow {
+  display: inline-block;
+  font-size: 24px;
+  animation: moveHorizontal 1s infinite alternate ease-in-out;
+}
+ 
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(8rpx);
+  }
+}
+.moving-arrow-right {
+  display: inline-block;
+  font-size: 24px;
+  animation: moveHorizontalright 1s infinite alternate ease-in-out;
+}
+ 
+@keyframes moveHorizontalright {
+  0% {
+    transform: translateX(8rpx);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
