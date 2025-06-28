@@ -73,7 +73,7 @@ Page({
         });
       },
       fail: function(e) {
-        this.onShowToast('#t-toast', "文件获取失败");
+        _this.onShowToast('#t-toast', "文件获取失败");
       }
     })
   },
@@ -98,7 +98,7 @@ Page({
         });
       },
       fail: function(e) {
-        this.onShowToast('#t-toast', "文件获取失败");
+        _this.onShowToast('#t-toast', "文件获取失败");
       }
     })
   },
