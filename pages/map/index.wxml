@@ -26,6 +26,8 @@
     ></video>
     <t-button theme="default" size="large" block variant="outline" class = "share-button"  bind:tap="radio">音频播放</t-button>
     </t-popup>
+
+    <t-toast id="t-toast" />
   </view>
 
 

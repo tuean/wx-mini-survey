@@ -1,5 +1,9 @@
 // pages/map/index.js
+import useToastBehavior from '~/behaviors/useToast';
+
+
 Page({
+  behaviors: [useToastBehavior],
 
   /**
    * 页面的初始数据
@@ -48,9 +52,60 @@ Page({
         this.setData({playing: true})
       }
   },
+  loadVideoDemo() {
+    wx.cloud.init()
+    let _this = this
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'fileUrl',
+      // 传给云函数的参数
+      data: {
+        id: 'flag1'
+      },
+      success: function(res) {
+        console.log(res.result) 
+        console.log(res.result.result.url)
+        let tempUrl = res.result.result.url
+        // _this.data.videoUrl = res.result.url
+        _this.setData({ 
+          visible: true,
+          videoUrl: tempUrl
+        });
+      },
+      fail: function(e) {
+        this.onShowToast('#t-toast', "文件获取失败");
+      }
+    })
+  },
+  loadAudioDemo() {
+    wx.cloud.init()
+    let _this = this
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'fileUrl',
+      // 传给云函数的参数
+      data: {
+        id: 'flag2'
+      },
+      success: function(res) {
+        console.log(res.result) 
+        console.log(res.result.result.url)
+        let tempUrl = res.result.result.url
+        // _this.data.videoUrl = res.result.url
+        _this.data.innerAudioContext.src = tempUrl
+        _this.setData({ 
+          visible: true
+        });
+      },
+      fail: function(e) {
+        this.onShowToast('#t-toast', "文件获取失败");
+      }
+    })
+  },
   jump() {
-    console.log('跳转')
-    this.setData({ visible: true });
+    console.log('跳转')    
+    this.loadVideoDemo();
+    this.loadAudioDemo();
   },
   onVisibleChange(e) {
     this.setData({
@@ -255,28 +310,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    // 先从数据库中拿到所有链接
-    wx.cloud.init()
-    let _this = this
-    wx.cloud.callFunction({
-      // 云函数名称
-      name: 'files',
-      // 传给云函数的参数
-      data: {},
-      success: function(res) {
-        console.log(res.result) // 3
-        const f1 = res.result.data.find(item => item.use === 'flag1');
-        _this.data.innerAudioContext.src = f1 == null ? '' : f1.url
-
-        const f2 = res.result.data.find(item => item.use === 'flag2');
-        _this.data.videoUrl = f2 == null ? '' : f2.url
-      },
-      fail: console.error
-    })
     this.videoContext = wx.createVideoContext('myVideo')
     const audio = wx.createInnerAudioContext({useWebAudioImplement: true})
     // audio.src = "https://636c-cloud1-8g0nusr7bf320e06-1305050421.tcb.qcloud.la/ringing_short.mp3?sign=7cf2addc75f3a13eec2737a2ad39740f&t=1751024785"
-    console.log(audio)
+    console.log('audio', audio)
     this.setData({
         innerAudioContext:  audio
     })
