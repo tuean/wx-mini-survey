@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    mapImage: '/static/pc-all.png',
+    mapImage1: '/static/logo.png',
+
 
   },
 

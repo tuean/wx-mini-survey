@@ -1,22 +1,22 @@
 <view>
   <t-navbar title="施耐德电气行业云展厅" left-arrow />
-  <view style="width:100%; overflow-x: scroll;white-space: nowrap;">
-    <view class="container1">
-      <t-row class="flag-overlay-top">
-      <t-col span = "10" style = "color: rgb(240, 235, 235); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); text-align: left;">
-        施耐德电气
+
+  <t-row class="flag-overlay-top" style="margin-top: {{topOffset}}px;">
+    <t-col span = "10" style = "color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); text-align: left;">
+      施耐德电气
+    </t-col>
+      <t-col span = "14" style = "color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); text-align: right;">
+        分享     
       </t-col>
-        <t-col span = "14" style = "color: rgb(240, 235, 235); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); text-align: right;">
-          分享     
-        </t-col>
-      </t-row>
+    </t-row>
+  <view style="width:100%; overflow-x: scroll;white-space: nowrap;">
+    <view class="container1" style="padding-top: {{topOffset}}px;">
       <image src="{{mapImage1}}" class="flag-overlay" bind:tap="jump"></image>
       <button class="flag-overlay-button" theme="light" size="small" > 
-      <span class="moving-arrow">{{'<'}}</span>
-        左右滑动手机屏幕 
-      <span class="moving-arrow-right">{{'>'}}</span>
+      <span class="moving-arrow-left">{{'<'}}</span>{{' '}}左右滑动手机屏幕{{' '}}<span class="moving-arrow-right">{{'>'}}</span>
       </button>
       <t-image src="{{mapImage}}" class="full-height-image1" mode="heightFix"></t-image>
+      <t-icon name="sound" size="48rpx" class="flag-overlay-sound"  bindtap ="radio" />
     </view>
 
     <t-popup
@@ -25,6 +25,8 @@
       bind:visible-change="onVisibleChange"
       placement="center"
     >
+    <view class = "popuptitle" style = "margin-top: 30rpx;">共赢数字化</view>
+    <view class = "popuptitle" style = "margin-bottom: 30rpx;">共创高效可持续的未来</view>
     <video 
       id="myVideo" 
       src="{{videoUrl}}" 
@@ -36,7 +38,11 @@
       bindenterpictureinpicture='bindVideoEnterPictureInPicture'
       bindleavepictureinpicture='bindVideoLeavePictureInPicture'
     ></video>
-    <t-button theme="default" size="large" block variant="outline" class = "share-button"  bind:tap="radio">音频播放</t-button>
+    <view style = "color: #333; font-size: 28rpx; margin: 30rpx">可靠高效，加速铁路行业运维数字化转型。</view>
+    <!-- <t-button theme="default" size="large" block variant="outline" class = "share-button"  bind:tap="radio">音频播放</t-button> -->
+
+    <t-button variant="text" style = "background-color: rgb(209, 50, 29); font-weight: 400; color: white; margin-bottom: 40rpx; width: 80%;" bind:tap="backtohall" block size="medium" theme="primary">返回展厅</t-button>
+
     </t-popup>
 
     <t-toast id="t-toast" />

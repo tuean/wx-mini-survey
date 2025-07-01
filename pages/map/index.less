@@ -2,7 +2,7 @@
 .container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   overflow: hidden;
 }
 
@@ -120,8 +120,8 @@
 }
 .flag-overlay {
   position: absolute; /* 绝对定位 */
-  top: 650rpx; /* 距离顶部 20px */
-  left: 350rpx; /* 距离右侧 20px */
+  top: 570rpx; /* 距离顶部 20px */
+  left: 330rpx; /* 距离右侧 20px */
   width: 100rpx; /* 小旗子宽度 */
   height: 100rpx; /* 小旗子高度 */
   z-index: 20; /* 确保小旗子在图片之上 */
@@ -135,6 +135,22 @@
     transform: rotate(15deg); /* 最终角度 */
   }
 }
+.flag-overlay-sound {
+  position: fixed; /* 绝对定位 */
+  top: 18%; /* 距离顶部 20px */
+  right: 0rpx; /* 水平居中 */
+  transform: translateX(-50%); /* 调整水平居中 */
+  z-index: 10; /* 确保小旗子在图片之上 */
+  color:white;
+  border: 0px solid white;
+  font-size: 28rpx;
+  line-height: 2;
+  font-weight: 500;
+  background-color: rgba(28, 196, 13);
+  border-radius: 50%;
+  padding: 10rpx;
+  box-shadow: 0 30rpx 60rpx rgba(0, 0, 0, 0.2);
+}
 
 .flag-overlay-button {
   position: fixed; /* 绝对定位 */
@@ -144,7 +160,7 @@
   z-index: 10; /* 确保小旗子在图片之上 */
   color:rgba(28, 196, 13);
   border: 0px solid white;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
   font-size: 32rpx;
   line-height: 2;
   font-weight: 500;
@@ -152,11 +168,13 @@
 
 .flag-overlay-top {
   position: fixed; /* 绝对定位 */
-  top: 170rpx; /* 距离顶部 20px */
-  z-index: 20; /* 确保小旗子在图片之上 */
+  z-index: 10; /* 确保小旗子在图片之上 */
   background-color: rgba(28, 196, 13);
   width: 100%;
-  padding: 20rpx 40rpx;
+  // padding: 20rpx 40rpx;
+  line-height: 2;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
   font-size: 32rpx;
 }
 
@@ -165,32 +183,44 @@
   height: 30vh;
   text-align: center;
 }
-.moving-arrow {
+/* 左箭头动画（从右向左滑动） */
+.moving-arrow-left {
   display: inline-block;
-  font-size: 24px;
-  animation: moveHorizontal 1s infinite alternate ease-in-out;
+  animation: slideLeft 1.5s infinite ease-in-out;
 }
  
-@keyframes moveHorizontal {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(8rpx);
-  }
-}
+/* 右箭头动画（从左向右滑动） */
 .moving-arrow-right {
   display: inline-block;
-  font-size: 24px;
-  animation: moveHorizontalright 1s infinite alternate ease-in-out;
+  animation: slideRight 1.5s infinite ease-in-out;
 }
  
-@keyframes moveHorizontalright {
-  0% {
-    transform: translateX(8rpx);
-  }
-  100% {
+/* 关键帧动画 */
+@keyframes slideLeft {
+  0%, 100% {
     transform: translateX(0);
   }
+  50% {
+    transform: translateX(-10rpx);
+  }
+}
+ 
+@keyframes slideRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10rpx);
+  }
+}
+
+.popuptitle {
+  color: #2fbe4a;
+  font-weight: 500;
+  font-size: 36rpx;
+  text-align: center;  
+}
+wx-button:after {
+  border: 0px solid rgba(0,0,0,.2);
 }
 

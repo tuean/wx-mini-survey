@@ -1,13 +1,21 @@
 <!--pages/hall/index.wxml-->
 
 
-<view class="bg">
-  <t-navbar title="展厅入口" left-arrow />
-  <view class="banner">banner</view>
+<view class = "container1">
+  <t-navbar title="施耐德电气行业云展厅" left-arrow />
+  <!-- <view class="banner">banner</view> -->
 
-  <view class="banner-image">展厅示意图</view>
+  <!-- <view class="banner-image">展厅示意图</view> -->
 
-  <t-button class="btn" theme="primary" size="large" block variant="outline"  bind:tap="enter">进入展厅</t-button>
+    <button class="flag-overlay-button" theme="light" size="small"            bind:tap="enter"> 
+      <span class="moving-arrow-left">{{'>'}}</span>{{' '}}进入展厅{{' '}}<span class="moving-arrow-right">{{'<'}}</span>
+    </button>
+    <!-- <view 
+      class="full-height-image1" 
+    ></view> -->
+    <t-image src="{{mapImage}}" class="full-height-image1" mode="aspectFill" ></t-image>
+    <image src="{{mapImage1}}" class="flag-overlay-logo animate" style = "width: 200rpx; " mode="widthFix">
+    </image>
 </view>
 
 

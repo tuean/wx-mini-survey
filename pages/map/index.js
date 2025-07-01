@@ -41,8 +41,12 @@ Page({
     isDragging: false, // 是否正在拖拽
     lastDistance: 0, // 上次双指距离（用于缩放）
     lastScale: 1, // 上次缩放比例
+    topOffset: 0
   },
-  radio() {
+  async radio() {
+    if(!this.data.innerAudioContext.src) {
+      await this.loadAudioDemo();
+    }
       let isPlaying = this.data.playing
       if (isPlaying) {
         this.data.innerAudioContext.pause();
@@ -93,9 +97,9 @@ Page({
         let tempUrl = res.result.result.url
         // _this.data.videoUrl = res.result.url
         _this.data.innerAudioContext.src = tempUrl
-        _this.setData({ 
-          visible: true
-        });
+        // _this.setData({ 
+        //   visible: true
+        // });
       },
       fail: function(e) {
         _this.onShowToast('#t-toast', "文件获取失败");
@@ -105,11 +109,20 @@ Page({
   jump() {
     console.log('跳转')    
     this.loadVideoDemo();
-    this.loadAudioDemo();
+    // this.loadAudioDemo();
+    let _this = this;
+      _this.setData({ 
+      playing: false
+    });
   },
   onVisibleChange(e) {
     this.setData({
       visible: e.detail.visible,
+    });
+  },
+  backtohall(e) {
+    this.setData({
+      visible: false,
     });
   },
   videoErrorCallback(e) {
@@ -311,7 +324,7 @@ Page({
    */
   onReady() {
     this.videoContext = wx.createVideoContext('myVideo')
-    const audio = wx.createInnerAudioContext({useWebAudioImplement: true})
+    const audio = wx.createInnerAudioContext({useWebAudioImplement: false})
     // audio.src = "https://636c-cloud1-8g0nusr7bf320e06-1305050421.tcb.qcloud.la/ringing_short.mp3?sign=7cf2addc75f3a13eec2737a2ad39740f&t=1751024785"
     console.log('audio', audio)
     this.setData({

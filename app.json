@@ -2,11 +2,11 @@
   "pages": [
     "pages/hall/index",
     "pages/main/index",
+    "pages/q1/index",
     "pages/home/index",
     "pages/message/index",
     "pages/my/index",
     "pages/register/index",
-    "pages/q1/index",
     "pages/result/index",
     "pages/map/index"
    ],
